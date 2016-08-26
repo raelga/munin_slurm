@@ -57,4 +57,4 @@ case $1 in
         ;;
     esac
 
-squeue -o "%C" | awk 'BEGIN {s=0} {s+=$1} END {printf "slurm_cpus.value  %g\n", s}'
+squeue -o "%C" -t RUNNING| awk 'BEGIN {s=0} {s+=$1} END {printf "slurm_cpus.value  %g\n", s}'
